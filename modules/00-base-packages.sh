@@ -2,7 +2,15 @@
 # Install base packages needed by other modules and general use
 
 sudo apt-get update -y
-sudo apt-get install -y fd-find curl unzip python3-pip npm
+sudo apt-get install -y fd-find curl unzip python3-pip
+
+# Install nvm and Node.js (latest LTS)
+if [ ! -d "$HOME/.nvm" ]; then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+nvm install --lts
 
 # Ubuntu installs fd as fdfind; symlink it to fd
 if command -v fdfind &>/dev/null && ! command -v fd &>/dev/null; then
