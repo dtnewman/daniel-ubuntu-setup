@@ -12,6 +12,9 @@ pip3 install --user virtualenvwrapper
 # Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
+# Install ruff
+pip3 install --user ruff
+
 # Add virtualenvwrapper config to .zshrc if not already present
 ZSHRC="$HOME/.zshrc"
 if ! grep -q "virtualenvwrapper" "$ZSHRC" 2>/dev/null; then
