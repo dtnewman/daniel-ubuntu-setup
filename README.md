@@ -15,7 +15,7 @@ The setup runs numbered modules in order:
 ## Usage
 
 ```bash
-git clone git@github.com:dtnewman/daniel-ubuntu-setup.git
+git clone https://github.com/dtnewman/daniel-ubuntu-setup.git
 cd daniel-ubuntu-setup
 bash setup.sh
 ```
