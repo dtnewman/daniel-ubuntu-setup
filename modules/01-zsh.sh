@@ -30,5 +30,10 @@ prompt_context() {
 EOF
 fi
 
+# Add zellij alias
+if ! grep -q 'alias zj=' "$HOME/.zshrc"; then
+    echo -e '\nalias zj="zellij"' >> "$HOME/.zshrc"
+fi
+
 # Set zsh as default shell
 sudo chsh -s "$(which zsh)" "$USER"

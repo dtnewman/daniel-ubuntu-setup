@@ -21,3 +21,14 @@ fi
 if ! command -v rustc &>/dev/null; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 fi
+
+# Install zellij
+if ! command -v zellij &>/dev/null; then
+    curl -L -o /tmp/zellij.tar.gz "https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz"
+    sudo tar -C /usr/local/bin -xzf /tmp/zellij.tar.gz zellij
+    sudo chmod +x /usr/local/bin/zellij
+    rm /tmp/zellij.tar.gz
+    echo "Zellij installed."
+else
+    echo "Zellij already installed, skipping."
+fi
