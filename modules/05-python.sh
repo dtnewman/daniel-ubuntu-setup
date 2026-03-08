@@ -18,9 +18,9 @@ ZSHRC="$HOME/.zshrc"
 if ! grep -q "virtualenvwrapper" "$ZSHRC" 2>/dev/null; then
     cat >> "$ZSHRC" << 'EOF'
 
-# virtualenvwrapper
+# virtualenvwrapper (installed via pipx — must use pipx venv's Python)
 export WORKON_HOME=$HOME/.virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=$HOME/.local/share/pipx/venvs/virtualenvwrapper/bin/python
 source $HOME/.local/bin/virtualenvwrapper.sh
 EOF
     echo "Added virtualenvwrapper config to .zshrc"
