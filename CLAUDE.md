@@ -28,7 +28,7 @@ These scripts are designed to be safely re-run on the same machine. All new code
 - **Tool installations**: guard with `command -v` checks (e.g., `if ! command -v rustc &>/dev/null; then ... fi`)
 - **Directory creation/cloning**: check existence first (e.g., `if [ ! -d "$HOME/.nvm" ]; then ... fi`); if already cloned, `git pull` instead of re-cloning
 - **Dotfile modifications** (`.zshrc`, etc.): always `grep` before appending to avoid duplicates
-- **pipx packages**: use `pipx upgrade-or-install` instead of `pipx install` (which errors if already installed)
+- **pipx packages**: `pipx install` errors if already installed, so check first (e.g. `if pipx list --short | grep -q "^pkg "; then pipx upgrade pkg; else pipx install pkg; fi`)
 - **Binary downloads**: compare installed version to latest before re-downloading (see neovim module for example)
 
 ## Conventions

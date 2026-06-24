@@ -7,8 +7,14 @@ sudo apt-get install -y python3 python3-pip python3-virtualenv pipx
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 # Install CLI tools via pipx (avoids externally-managed-environment error)
-pipx upgrade-or-install virtualenvwrapper
-pipx upgrade-or-install ruff
+# pipx has no upgrade-or-install; install if missing, otherwise upgrade.
+for pkg in virtualenvwrapper ruff; do
+    if pipx list --short 2>/dev/null | grep -q "^$pkg "; then
+        pipx upgrade "$pkg"
+    else
+        pipx install "$pkg"
+    fi
+done
 
 # Install uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
