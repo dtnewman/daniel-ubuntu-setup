@@ -35,5 +35,11 @@ if ! grep -q 'alias zj=' "$HOME/.zshrc"; then
     echo -e '\nalias zj="zellij"' >> "$HOME/.zshrc"
 fi
 
+# Set UTF-8 locale for zsh (in .zshenv so it applies to all zsh invocations)
+if ! grep -q 'export LANG=C.UTF-8' "$HOME/.zshenv" 2>/dev/null; then
+    printf '%s\n' 'export LANG=C.UTF-8' 'export LC_ALL=C.UTF-8' | cat - "$HOME/.zshenv" 2>/dev/null > "$HOME/.zshenv.tmp"
+    mv "$HOME/.zshenv.tmp" "$HOME/.zshenv"
+fi
+
 # Set zsh as default shell
 sudo chsh -s "$(which zsh)" "$USER"
